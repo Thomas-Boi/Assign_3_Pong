@@ -1,14 +1,18 @@
 //
 //  ViewController.h
-//  Assign3_Pong
+//  glesbasics
 //
-//  Created by socas on 2021-04-07.
+//  Created by Borna Noureddin on 2020-01-14.
+//  Copyright © 2020 BCIT. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "Renderer.h" // ###
+#import "Transformations.h"
+#import "GameManager.h"
 
-@interface ViewController : UIViewController
+//@interface ViewController : UIViewController
+@interface ViewController : GLKViewController // ###
 
 
 @end
-
