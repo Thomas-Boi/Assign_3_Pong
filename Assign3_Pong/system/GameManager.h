@@ -21,10 +21,13 @@
 #import "PhysicsBodyTypeEnum.h"
 #import "MonsterInfo.h"
 #import "Bullet.h"
+#import "ScoreTracker.h"
 
 @interface GameManager : NSObject
 
 - (void) initManager:(GLKView *)view;
+- (ScoreTracker*)getScoreTracker;
+
 // for the player and UI 
 - (void) applyImpulseOnPlayer:(float)x Y:(float)y;
 - (void) fireBullet;

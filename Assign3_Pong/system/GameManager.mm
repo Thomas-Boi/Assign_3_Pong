@@ -14,6 +14,7 @@ const GLKVector2 MONSTER_SPAWN_POSITION = GLKVector2Make(SCREEN_WIDTH/2, SCREEN_
     Renderer *renderer;
     ObjectTracker *tracker;
     PhysicsWorld *physics;
+    ScoreTracker *scoreTracker;
     
     float elapsedMonsterSpawnTime;
     bool playerDirection;
@@ -32,10 +33,16 @@ const GLKVector2 MONSTER_SPAWN_POSITION = GLKVector2Make(SCREEN_WIDTH/2, SCREEN_
     
     tracker = [[ObjectTracker alloc] init];
     
+    scoreTracker = [[ScoreTracker alloc] init];
+    
     physics = [[PhysicsWorld alloc] init];
     [self createGameScene];
     
     playerDirection = true;
+}
+
+- (ScoreTracker*) getScoreTracker {
+    return scoreTracker;
 }
 
 

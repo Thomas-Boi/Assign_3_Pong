@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62EAE5852620D7AF005E9CC8 /* ScoreTracker.mm in Sources */ = {isa = PBXBuildFile; fileRef = 62EAE5842620D7AF005E9CC8 /* ScoreTracker.mm */; };
 		FAF74AC9261EDE180054698C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF74AC8261EDE180054698C /* AppDelegate.m */; };
 		FAF74ACC261EDE180054698C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF74ACB261EDE180054698C /* SceneDelegate.m */; };
 		FAF74ACF261EDE180054698C /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FAF74ACE261EDE180054698C /* ViewController.mm */; };
@@ -81,6 +82,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		62EAE5832620D799005E9CC8 /* ScoreTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScoreTracker.h; sourceTree = "<group>"; };
+		62EAE5842620D7AF005E9CC8 /* ScoreTracker.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ScoreTracker.mm; sourceTree = "<group>"; };
 		FAF74AC4261EDE180054698C /* Assign3_Pong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assign3_Pong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF74AC7261EDE180054698C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FAF74AC8261EDE180054698C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -276,22 +279,24 @@
 		FAF74AE2261EE0070054698C /* system */ = {
 			isa = PBXGroup;
 			children = (
+				FAF74AEF261EE0070054698C /* GameManager.h */,
+				FAF74AE5261EE0070054698C /* GameManager.mm */,
+				FAF74AE9261EE0070054698C /* GLESRenderer.cpp */,
+				FAF74AED261EE0070054698C /* GLESRenderer.hpp */,
+				FAF74AEC261EE0070054698C /* MonsterInfo.h */,
+				FAF74AE8261EE0070054698C /* ObjectTracker.h */,
+				FAF74AEB261EE0070054698C /* ObjectTracker.mm */,
+				FAF74AF1261EE0070054698C /* PhysicsBodyTypeEnum.h */,
+				FAF74AEE261EE0070054698C /* PhysicsWorld.h */,
+				FAF74AEA261EE0070054698C /* PhysicsWorld.mm */,
+				FAF74AE7261EE0070054698C /* Renderer.h */,
+				FAF74AF2261EE0070054698C /* Renderer.mm */,
 				FAF74AE3261EE0070054698C /* ScreenInfo.h */,
 				FAF74AE4261EE0070054698C /* Transformations.h */,
-				FAF74AE5261EE0070054698C /* GameManager.mm */,
-				FAF74AE6261EE0070054698C /* UniformEnum.h */,
-				FAF74AE7261EE0070054698C /* Renderer.h */,
-				FAF74AE8261EE0070054698C /* ObjectTracker.h */,
-				FAF74AE9261EE0070054698C /* GLESRenderer.cpp */,
-				FAF74AEA261EE0070054698C /* PhysicsWorld.mm */,
-				FAF74AEB261EE0070054698C /* ObjectTracker.mm */,
-				FAF74AEC261EE0070054698C /* MonsterInfo.h */,
-				FAF74AED261EE0070054698C /* GLESRenderer.hpp */,
-				FAF74AEE261EE0070054698C /* PhysicsWorld.h */,
-				FAF74AEF261EE0070054698C /* GameManager.h */,
 				FAF74AF0261EE0070054698C /* Transformations.m */,
-				FAF74AF1261EE0070054698C /* PhysicsBodyTypeEnum.h */,
-				FAF74AF2261EE0070054698C /* Renderer.mm */,
+				FAF74AE6261EE0070054698C /* UniformEnum.h */,
+				62EAE5832620D799005E9CC8 /* ScoreTracker.h */,
+				62EAE5842620D7AF005E9CC8 /* ScoreTracker.mm */,
 			);
 			path = system;
 			sourceTree = "<group>";
@@ -615,6 +620,7 @@
 				FAF74BA7261EE11F0054698C /* b2ChainShape.cpp in Sources */,
 				FAF74BAB261EE11F0054698C /* b2TimeOfImpact.cpp in Sources */,
 				FAF74B8A261EE11F0054698C /* b2CircleContact.cpp in Sources */,
+				62EAE5852620D7AF005E9CC8 /* ScoreTracker.mm in Sources */,
 				FAF74B7C261EE11F0054698C /* Player.mm in Sources */,
 				FAF74AF3261EE0070054698C /* GameManager.mm in Sources */,
 				FAF74AF4261EE0070054698C /* GLESRenderer.cpp in Sources */,
