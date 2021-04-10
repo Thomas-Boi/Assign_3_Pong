@@ -12,7 +12,6 @@
 #import "GameObject.h"
 #import "Wall.h"
 #import "Player.h"
-#import "Monster.h"
 
 @interface Bullet: GameObject
 

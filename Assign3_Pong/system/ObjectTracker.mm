@@ -12,11 +12,14 @@
     // track player separately due to UI
     Player *_player;
     
+    // track player separately due to UI
+    Bullet *_ball;
+    
+    // track player separately due to UI
+    Player *_enemy;
+
     // platforms don't change throughout the game
     NSMutableArray *_platforms;
-    
-    // monsters change throughout the game
-    NSMutableArray *_monsters;
 }
 
 @end
@@ -26,21 +29,13 @@
 // props
 @synthesize player=_player;
 
-- (NSMutableArray *) platforms
-{
-    return _platforms;
-}
+@synthesize platforms=_platforms;
 
-@synthesize monsters=_monsters;
-
-@synthesize bullets;
 
 - (instancetype) init
 {
     self = [super init];
     _platforms = [NSMutableArray array];
-    _monsters = [NSMutableArray array];
-    bullets = [NSMutableArray array];
     return self;
 }
 
@@ -49,19 +44,14 @@
     _player = player;
 }
 
-- (void) addBullet: (Bullet *) bullet
+- (void) addBall: (Bullet *) ball
 {
-    [bullets addObject:bullet];
+    _ball = ball;
 }
 
-- (bool) removeBullet: (Bullet *) bullet
+- (void) addEnemy: (Player *) enemy
 {
-    if (!bullet.active)
-    {
-        [bullets removeObject:bullet];
-        return true;
-    }
-    return false;
+    _enemy = enemy;
 }
 
 - (void) addPlatform: (GameObject *) platform
@@ -69,20 +59,6 @@
     [_platforms addObject:platform];
 }
 
-- (void) addMonster: (Monster *) monster
-{
-    [_monsters addObject:monster];
-}
-
-- (bool) removeMonster:(Monster *)monster
-{
-    if (!monster.active)
-    {
-        [_monsters removeObject:monster];
-        return true;
-    }
-    return false;
-}
 
 // check and see if we need to delete
 // any objects from the array.

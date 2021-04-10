@@ -11,7 +11,6 @@
 #import <Foundation/Foundation.h>
 #import <Box2D/Box2D.h>
 #import "GameObject.h"
-#import "Monster.h"
 #import "PhysicsBodyTypeEnum.h"
 
 @interface PhysicsWorld : NSObject

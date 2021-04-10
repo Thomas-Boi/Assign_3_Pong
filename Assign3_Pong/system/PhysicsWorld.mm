@@ -61,7 +61,7 @@ public:
 {
     if (self = [super init])
     {
-        gravity = new b2Vec2(0.0f, -20.0f);
+        gravity = new b2Vec2(0.0f, 0.0f);
         world = new b2World(*gravity);
         
         contactListener = new PhysicsContactListener();
@@ -110,13 +110,6 @@ public:
         fixtureDef.density = 1.0f;
         fixtureDef.friction = 1.0f;
         fixtureDef.restitution = 0;
-        
-        if ([obj isKindOfClass:[Monster class]])
-        {
-            // all group index with same negative value
-            // won't collide with each other
-            fixtureDef.filter.groupIndex = -1;
-        }
         body->CreateFixture(&fixtureDef);
         
         // pass the physics body back to the obj

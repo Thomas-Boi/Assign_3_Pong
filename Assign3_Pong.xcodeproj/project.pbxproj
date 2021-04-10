@@ -26,11 +26,9 @@
 		FAF74B77261EE11F0054698C /* PlayerShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FAF74AFD261EE11E0054698C /* PlayerShader.fsh */; };
 		FAF74B78261EE11F0054698C /* PlatformShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FAF74AFE261EE11E0054698C /* PlatformShader.fsh */; };
 		FAF74B79261EE11F0054698C /* GameObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = FAF74B00261EE11E0054698C /* GameObject.mm */; };
-		FAF74B7A261EE11F0054698C /* Monster.mm in Sources */ = {isa = PBXBuildFile; fileRef = FAF74B01261EE11E0054698C /* Monster.mm */; };
 		FAF74B7B261EE11F0054698C /* Platform.mm in Sources */ = {isa = PBXBuildFile; fileRef = FAF74B04261EE11E0054698C /* Platform.mm */; };
 		FAF74B7C261EE11F0054698C /* Player.mm in Sources */ = {isa = PBXBuildFile; fileRef = FAF74B05261EE11E0054698C /* Player.mm */; };
 		FAF74B7D261EE11F0054698C /* Bullet.mm in Sources */ = {isa = PBXBuildFile; fileRef = FAF74B07261EE11E0054698C /* Bullet.mm */; };
-		FAF74B7E261EE11F0054698C /* Spikes.mm in Sources */ = {isa = PBXBuildFile; fileRef = FAF74B0A261EE11E0054698C /* Spikes.mm */; };
 		FAF74B7F261EE11F0054698C /* Wall.mm in Sources */ = {isa = PBXBuildFile; fileRef = FAF74B0C261EE11E0054698C /* Wall.mm */; };
 		FAF74B80261EE11F0054698C /* crate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAF74B0F261EE11E0054698C /* crate.jpg */; };
 		FAF74B81261EE11F0054698C /* b2Body.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FAF74B12261EE11E0054698C /* b2Body.cpp */; };
@@ -117,17 +115,13 @@
 		FAF74AFD261EE11E0054698C /* PlayerShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PlayerShader.fsh; sourceTree = "<group>"; };
 		FAF74AFE261EE11E0054698C /* PlatformShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PlatformShader.fsh; sourceTree = "<group>"; };
 		FAF74B00261EE11E0054698C /* GameObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameObject.mm; sourceTree = "<group>"; };
-		FAF74B01261EE11E0054698C /* Monster.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Monster.mm; sourceTree = "<group>"; };
 		FAF74B02261EE11E0054698C /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
-		FAF74B03261EE11E0054698C /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Monster.h; sourceTree = "<group>"; };
 		FAF74B04261EE11E0054698C /* Platform.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Platform.mm; sourceTree = "<group>"; };
 		FAF74B05261EE11E0054698C /* Player.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Player.mm; sourceTree = "<group>"; };
 		FAF74B06261EE11E0054698C /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wall.h; sourceTree = "<group>"; };
 		FAF74B07261EE11E0054698C /* Bullet.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Bullet.mm; sourceTree = "<group>"; };
 		FAF74B08261EE11E0054698C /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		FAF74B09261EE11E0054698C /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
-		FAF74B0A261EE11E0054698C /* Spikes.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Spikes.mm; sourceTree = "<group>"; };
-		FAF74B0B261EE11E0054698C /* Spikes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spikes.h; sourceTree = "<group>"; };
 		FAF74B0C261EE11E0054698C /* Wall.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Wall.mm; sourceTree = "<group>"; };
 		FAF74B0D261EE11E0054698C /* Platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
 		FAF74B0F261EE11E0054698C /* crate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = crate.jpg; sourceTree = "<group>"; };
@@ -316,17 +310,13 @@
 			isa = PBXGroup;
 			children = (
 				FAF74B00261EE11E0054698C /* GameObject.mm */,
-				FAF74B01261EE11E0054698C /* Monster.mm */,
 				FAF74B02261EE11E0054698C /* GameObject.h */,
-				FAF74B03261EE11E0054698C /* Monster.h */,
 				FAF74B04261EE11E0054698C /* Platform.mm */,
 				FAF74B05261EE11E0054698C /* Player.mm */,
+				FAF74B08261EE11E0054698C /* Player.h */,
 				FAF74B06261EE11E0054698C /* Wall.h */,
 				FAF74B07261EE11E0054698C /* Bullet.mm */,
-				FAF74B08261EE11E0054698C /* Player.h */,
 				FAF74B09261EE11E0054698C /* Bullet.h */,
-				FAF74B0A261EE11E0054698C /* Spikes.mm */,
-				FAF74B0B261EE11E0054698C /* Spikes.h */,
 				FAF74B0C261EE11E0054698C /* Wall.mm */,
 				FAF74B0D261EE11E0054698C /* Platform.h */,
 			);
@@ -572,7 +562,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAF74B99261EE11F0054698C /* b2RopeJoint.cpp in Sources */,
-				FAF74B7E261EE11F0054698C /* Spikes.mm in Sources */,
 				FAF74BA1261EE11F0054698C /* b2StackAllocator.cpp in Sources */,
 				FAF74BA5261EE11F0054698C /* b2CollidePolygon.cpp in Sources */,
 				FAF74BAA261EE11F0054698C /* b2PolygonShape.cpp in Sources */,
@@ -607,7 +596,6 @@
 				FAF74B82261EE11F0054698C /* b2World.cpp in Sources */,
 				FAF74B93261EE11F0054698C /* b2MotorJoint.cpp in Sources */,
 				FAF74BA9261EE11F0054698C /* b2CircleShape.cpp in Sources */,
-				FAF74B7A261EE11F0054698C /* Monster.mm in Sources */,
 				FAF74B7F261EE11F0054698C /* Wall.mm in Sources */,
 				FAF74B98261EE11F0054698C /* b2PulleyJoint.cpp in Sources */,
 				FAF74B8C261EE11F0054698C /* b2Contact.cpp in Sources */,

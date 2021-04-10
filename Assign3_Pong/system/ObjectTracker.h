@@ -9,7 +9,6 @@
 #define ObjectTracker_h
 
 #import "Player.h"
-#import "Monster.h"
 #import "Bullet.h"
 #import <Foundation/Foundation.h>
 
@@ -17,16 +16,14 @@
 @interface ObjectTracker : NSObject
 
 @property(readonly) Player *player;
+@property(readonly) Bullet *ball;
+@property(readonly) Player *enemy;
 @property(readonly) NSMutableArray *platforms;
-@property(readonly) NSMutableArray *monsters;
-@property(readonly) NSMutableArray *bullets;
 
 - (void) addPlayer: (Player *) player;
+- (void) addBall: (Bullet *) ball;
+- (void) addEnemy: (Player *) enemy;
 - (void) addPlatform: (GameObject *) platform;
-- (void) addMonster: (Monster *) monster;
-- (void) addBullet: (Bullet *) bullet;
-- (bool) removeMonster:(Monster *)monster;
-- (bool) removeBullet:(Bullet *) bullet;
 - (void) cleanUp;
 
 @end
