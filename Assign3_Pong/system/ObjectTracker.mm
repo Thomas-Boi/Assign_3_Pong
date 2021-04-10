@@ -8,17 +8,7 @@
 #import "ObjectTracker.h"
 
 @interface ObjectTracker()
-{
-    // track player separately due to UI
-    Player *_player;
-    
-    // track player separately due to UI
-    Bullet *_ball;
-    
-    // track player separately due to UI
-    Player *_enemy;
-
-    // platforms don't change throughout the game
+{    // platforms don't change throughout the game
     NSMutableArray *_platforms;
 }
 
@@ -27,7 +17,9 @@
 @implementation ObjectTracker
 
 // props
-@synthesize player=_player;
+@synthesize player;
+@synthesize enemy;
+@synthesize ball;
 
 @synthesize platforms=_platforms;
 
@@ -37,21 +29,6 @@
     self = [super init];
     _platforms = [NSMutableArray array];
     return self;
-}
-
-- (void) addPlayer: (Player *) player
-{
-    _player = player;
-}
-
-- (void) addBall: (Bullet *) ball
-{
-    _ball = ball;
-}
-
-- (void) addEnemy: (Player *) enemy
-{
-    _enemy = enemy;
 }
 
 - (void) addPlatform: (GameObject *) platform

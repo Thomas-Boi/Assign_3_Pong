@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		62EAE5852620D7AF005E9CC8 /* ScoreTracker.mm in Sources */ = {isa = PBXBuildFile; fileRef = 62EAE5842620D7AF005E9CC8 /* ScoreTracker.mm */; };
+		FAF2F70F2622571E009E757C /* Enemy.mm in Sources */ = {isa = PBXBuildFile; fileRef = FAF2F70E2622571E009E757C /* Enemy.mm */; };
 		FAF74AC9261EDE180054698C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF74AC8261EDE180054698C /* AppDelegate.m */; };
 		FAF74ACC261EDE180054698C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF74ACB261EDE180054698C /* SceneDelegate.m */; };
 		FAF74ACF261EDE180054698C /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FAF74ACE261EDE180054698C /* ViewController.mm */; };
@@ -82,6 +83,8 @@
 /* Begin PBXFileReference section */
 		62EAE5832620D799005E9CC8 /* ScoreTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScoreTracker.h; sourceTree = "<group>"; };
 		62EAE5842620D7AF005E9CC8 /* ScoreTracker.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ScoreTracker.mm; sourceTree = "<group>"; };
+		FAF2F70D26225712009E757C /* Enemy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
+		FAF2F70E2622571E009E757C /* Enemy.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Enemy.mm; sourceTree = "<group>"; };
 		FAF74AC4261EDE180054698C /* Assign3_Pong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assign3_Pong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAF74AC7261EDE180054698C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FAF74AC8261EDE180054698C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -312,13 +315,15 @@
 				FAF74B00261EE11E0054698C /* GameObject.mm */,
 				FAF74B02261EE11E0054698C /* GameObject.h */,
 				FAF74B04261EE11E0054698C /* Platform.mm */,
+				FAF74B0D261EE11E0054698C /* Platform.h */,
 				FAF74B05261EE11E0054698C /* Player.mm */,
 				FAF74B08261EE11E0054698C /* Player.h */,
 				FAF74B06261EE11E0054698C /* Wall.h */,
 				FAF74B07261EE11E0054698C /* Bullet.mm */,
 				FAF74B09261EE11E0054698C /* Bullet.h */,
 				FAF74B0C261EE11E0054698C /* Wall.mm */,
-				FAF74B0D261EE11E0054698C /* Platform.h */,
+				FAF2F70D26225712009E757C /* Enemy.h */,
+				FAF2F70E2622571E009E757C /* Enemy.mm */,
 			);
 			path = GameObjects;
 			sourceTree = "<group>";
@@ -579,6 +584,7 @@
 				FAF74B8B261EE11F0054698C /* b2EdgeAndCircleContact.cpp in Sources */,
 				FAF74B83261EE11F0054698C /* b2Fixture.cpp in Sources */,
 				FAF74B84261EE11F0054698C /* b2ChainAndPolygonContact.cpp in Sources */,
+				FAF2F70F2622571E009E757C /* Enemy.mm in Sources */,
 				FAF74B9B261EE11F0054698C /* b2ContactManager.cpp in Sources */,
 				FAF74BA4261EE11F0054698C /* b2CollideCircle.cpp in Sources */,
 				FAF74B94261EE11F0054698C /* b2RevoluteJoint.cpp in Sources */,

@@ -332,7 +332,7 @@ int GLESRenderer::GenSphere(int numSlices, float radius, GLfloat **vertices,
             {
                 ( *vertices ) [vertex + 0] = radius * sinf ( angleStep * ( float ) i ) *
                 sinf ( angleStep * ( float ) j );
-                ( *vertices ) [vertex + 1] = radius * 3 * cosf ( angleStep * ( float ) i );
+                ( *vertices ) [vertex + 1] = radius * cosf ( angleStep * ( float ) i );
                 ( *vertices ) [vertex + 2] = radius * sinf ( angleStep * ( float ) i ) *
                 cosf ( angleStep * ( float ) j );
             }

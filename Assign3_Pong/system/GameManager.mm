@@ -52,23 +52,24 @@ const GLKVector2 MONSTER_SPAWN_POSITION = GLKVector2Make(SCREEN_WIDTH/2, SCREEN_
         
         // moving objects
         float padHeight = 2;
+        float padWidth = 0.5;
         Player *playerPad = [[Player alloc] init];
-        [playerPad initPosition:GLKVector3Make(SCREEN_WIDTH/4, SCREEN_HEIGHT/2, DEPTH) Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(1, padHeight, 1) VertShader:@"PlayerShader.vsh" AndFragShader:@"PlayerShader.fsh" ModelName:@"cube" PhysicsBodyType:DYNAMIC];
+        [playerPad initPosition:GLKVector3Make(SCREEN_WIDTH/4, SCREEN_HEIGHT/2, DEPTH) Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(padWidth, padHeight, 1) VertShader:@"PlayerShader.vsh" AndFragShader:@"PlayerShader.fsh" ModelName:@"cube" PhysicsBodyType:DYNAMIC];
         
         // tracker tracks things to be used for render and physics
-        [tracker addPlayer:playerPad];
+        tracker.player = playerPad;
         
         // physics tracks things for box2D
         [physics addObject:playerPad];
         
-        Player *enemyPad = [[Player alloc] init];
-        [enemyPad initPosition:GLKVector3Make(SCREEN_WIDTH/4 * 3, SCREEN_HEIGHT/2, DEPTH) Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(1, padHeight, 1) VertShader:@"PlayerShader.vsh" AndFragShader:@"PlayerShader.fsh" ModelName:@"cube" PhysicsBodyType:DYNAMIC];
-        [tracker addEnemy:enemyPad];
+        Enemy *enemyPad = [[Enemy alloc] init];
+        [enemyPad initPosition:GLKVector3Make(SCREEN_WIDTH/4 * 3, SCREEN_HEIGHT/2, DEPTH) Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(padWidth, padHeight, 1) VertShader:@"PlayerShader.vsh" AndFragShader:@"PlayerShader.fsh" ModelName:@"cube" PhysicsBodyType:DYNAMIC];
+        tracker.enemy = enemyPad;
         [physics addObject:enemyPad];
         
         Bullet *ball = [[Bullet alloc] init];
-        [ball initPosition:GLKVector3Make(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, DEPTH) Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(1, 1, 1) VertShader:@"PlayerShader.vsh" AndFragShader:@"PlayerShader.fsh" ModelName:@"cube" PhysicsBodyType:DYNAMIC];
-        [tracker addBall:ball];
+        [ball initPosition:GLKVector3Make(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, DEPTH) Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(3, 3, 1) VertShader:@"PlayerShader.vsh" AndFragShader:@"PlayerShader.fsh" ModelName:@"sphere" PhysicsBodyType:DYNAMIC];
+        tracker.ball = ball;
         [physics addObject:ball];
         
         
@@ -84,12 +85,12 @@ const GLKVector2 MONSTER_SPAWN_POSITION = GLKVector2Make(SCREEN_WIDTH/2, SCREEN_
         [tracker addPlatform:rightWall];
         [physics addObject:rightWall];
         
-        GameObject *ceiling = [[GameObject alloc] init];
+        Platform *ceiling = [[Platform alloc] init];
         [ceiling initPosition:GLKVector3Make(SCREEN_WIDTH/2, SCREEN_HEIGHT, DEPTH) Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(SCREEN_WIDTH, platformThickness, 1) VertShader:@"PlatformShader.vsh" AndFragShader:@"PlatformShader.fsh" ModelName:@"cube" PhysicsBodyType:STATIC];
         [tracker addPlatform:ceiling];
         [physics addObject:ceiling];
         
-        GameObject *floor = [[GameObject alloc] init];
+        Platform *floor = [[Platform alloc] init];
         [floor initPosition:GLKVector3Make(SCREEN_WIDTH/2, 0, DEPTH) Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(SCREEN_WIDTH, platformThickness, 1) VertShader:@"PlatformShader.vsh" AndFragShader:@"PlatformShader.fsh" ModelName:@"cube" PhysicsBodyType:STATIC];
         [tracker addPlatform:floor];
         [physics addObject:floor];
@@ -113,6 +114,8 @@ const GLKVector2 MONSTER_SPAWN_POSITION = GLKVector2Make(SCREEN_WIDTH/2, SCREEN_
     // this is required for non-static physics bodies
     [tracker.player update];
     
+    // update the enemy
+    [tracker.enemy update];
     // platforms don't need to be updated
     
 }

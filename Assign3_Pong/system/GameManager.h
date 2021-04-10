@@ -12,6 +12,8 @@
 #import "GameObject.h"
 #import "Player.h"
 #import "Wall.h"
+#import "Platform.h"
+#import "Enemy.h"
 #import "Renderer.h"
 #import "ObjectTracker.h"
 #import "Transformations.h"
