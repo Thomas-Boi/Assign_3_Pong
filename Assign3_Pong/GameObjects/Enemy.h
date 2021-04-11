@@ -11,6 +11,7 @@
 #import <Foundation/Foundation.h>
 #import "GameObject.h"
 #import "Platform.h"
+#import "Bullet.h"
 
 @interface Enemy : GameObject
 

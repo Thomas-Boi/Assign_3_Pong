@@ -101,6 +101,7 @@ const GLKVector3 initialBallPosition = GLKVector3Make(SCREEN_WIDTH/2, SCREEN_HEI
 {
     [tracker.ball startMoving];
     [tracker.enemy startMoving];
+        
 }
 
 - (void) reset
@@ -115,6 +116,7 @@ const GLKVector3 initialBallPosition = GLKVector3Make(SCREEN_WIDTH/2, SCREEN_HEI
     [tracker.player setPosition:initialPlayerPosition];
     [tracker.enemy setPosition:initialEnemyPosition];
     [tracker.ball setPosition:initialBallPosition];
+    
 }
 
 // for the player
@@ -142,6 +144,7 @@ const GLKVector3 initialBallPosition = GLKVector3Make(SCREEN_WIDTH/2, SCREEN_HEI
     {
         if (tracker.ball.hitWall == LEFT_WALL)
         {
+            NSLog(@"Here?");
             [scoreTracker incrementEnemyScore];
         }
         else if (tracker.ball.hitWall == RIGHT_WALL)
@@ -149,6 +152,8 @@ const GLKVector3 initialBallPosition = GLKVector3Make(SCREEN_WIDTH/2, SCREEN_HEI
             [scoreTracker incrementPlayerScore];
         }
         [self reset];
+        
+        self.getScoreTracker.matchStarted = false;
     }
     // platforms don't need to be updated
     
