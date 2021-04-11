@@ -28,13 +28,13 @@ const int speedY = 2;
 // MARK: Handle actions
 
 - (IBAction)startGame:(UITapGestureRecognizer *)sender {
-    NSLog(@"Game started - tap is disabled");
-    //self.tapGesture.enabled = false;
     self.startLabel.hidden = true;
     [self.winnerLabel setText:@""];
     
     // start game here...
     if (!manager.getScoreTracker.gameStarted) {
+        NSLog(@"Game started");
+
         manager.getScoreTracker.matchStarted = true;
         manager.getScoreTracker.gameStarted = true;
         [manager.getScoreTracker resetScores];
@@ -42,6 +42,8 @@ const int speedY = 2;
     }
     
     if (!manager.getScoreTracker.matchStarted) {
+        NSLog(@"Match started");
+        
         manager.getScoreTracker.matchStarted = true;
         [manager startGame];
     }
@@ -91,7 +93,6 @@ const int speedY = 2;
         NSString* winnerString = [manager.getScoreTracker getWinnerString];
         [self.winnerLabel setText:winnerString];
         
-        //self.tapGesture.enabled = true;
         self.startLabel.hidden = false;
     }
 }

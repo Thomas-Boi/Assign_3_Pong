@@ -74,7 +74,7 @@ const GLKVector3 initialBallPosition = GLKVector3Make(SCREEN_WIDTH/2, SCREEN_HEI
         float platformThickness = 1;
         Wall *leftWall = [[Wall alloc] init];
         [leftWall initPosition:GLKVector3Make(0 - platformThickness, SCREEN_HEIGHT / 2, DEPTH) Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(platformThickness, SCREEN_HEIGHT, 1) VertShader:@"PlatformShader.vsh" AndFragShader:@"PlatformShader.fsh" ModelName:@"cube" PhysicsBodyType:STATIC];
-        leftWall.side = RIGHT_WALL;
+        leftWall.side = LEFT_WALL;
         [tracker addPlatform:leftWall];
         [physics addObject:leftWall];
         
@@ -144,13 +144,13 @@ const GLKVector3 initialBallPosition = GLKVector3Make(SCREEN_WIDTH/2, SCREEN_HEI
     {
         if (tracker.ball.hitWall == LEFT_WALL)
         {
-            NSLog(@"Here?");
             [scoreTracker incrementEnemyScore];
         }
         else if (tracker.ball.hitWall == RIGHT_WALL)
         {
             [scoreTracker incrementPlayerScore];
         }
+        
         [self reset];
         
         self.getScoreTracker.matchStarted = false;
