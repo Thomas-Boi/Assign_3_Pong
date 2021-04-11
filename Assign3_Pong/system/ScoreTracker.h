@@ -12,7 +12,8 @@
 
 @interface ScoreTracker : NSObject
 
-- (void) incrementPlayerScore:(bool)player;
+- (void) incrementPlayerScore;
+- (void) incrementEnemyScore;
 - (void) resetScores;
 - (bool) gameEnded;
 - (NSString *) getWinnerString;

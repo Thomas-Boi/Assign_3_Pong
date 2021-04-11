@@ -259,11 +259,16 @@ const int DEFAULT_WIDTH = 1;
 // this is usually used to init an object.
 // each element in the rotation are around the x-axis, y-axis,
 // and z-axis respectively.
-- (void)loadPosition: (GLKVector3)position
+- (void)updateOpenGLPosition: (GLKVector3)position
 {
     GLKMatrix4 transform = [Transformations changeMatrix:self.modelMatrix ByTranslation:GLKVector3Subtract(position, _position)];
     _position = position;
     [self loadModelMatrix:transform];
+}
+
+- (void)setPosition:(GLKVector3)position
+{
+    _body->SetTransform(b2Vec2(position.x, position.y), 0);
 }
 
 
@@ -303,7 +308,7 @@ const int DEFAULT_WIDTH = 1;
     {
         // update the position based on physics
         b2Vec2 position2D = _body->GetPosition();
-        [self loadPosition:GLKVector3Make(position2D.x, position2D.y, _position.z)];
+        [self updateOpenGLPosition:GLKVector3Make(position2D.x, position2D.y, _position.z)];
     }
 }
 

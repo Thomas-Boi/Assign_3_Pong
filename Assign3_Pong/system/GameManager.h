@@ -26,13 +26,11 @@
 
 - (void) initManager:(GLKView *)view;
 - (ScoreTracker*)getScoreTracker;
-
-// for the player and UI 
+- (void) startGame;
 - (void) applyImpulseOnPlayer:(float)x Y:(float)y;
-- (void) fireBullet;
 - (void) update:(float) deltaTime;
 - (void) draw;
-- (void) direction:(bool) d;
+- (void) reset;
 
 @end
 

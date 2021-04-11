@@ -8,10 +8,11 @@
 #import "Wall.h"
 
 @interface Wall() {
-    
 }
 @end
 
 @implementation Wall
+
+@synthesize side;
 
 @end

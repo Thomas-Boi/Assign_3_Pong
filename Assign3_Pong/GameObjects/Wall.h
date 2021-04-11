@@ -13,6 +13,8 @@
 
 @interface Wall : GameObject
 
+@property int side;
+
 @end
 
 #endif /* Wall_h */

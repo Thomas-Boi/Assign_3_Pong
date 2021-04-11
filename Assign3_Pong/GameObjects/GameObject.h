@@ -57,6 +57,7 @@
 // props
 
 - (void)loadPosition: (GLKVector3)position Rotation: (GLKVector3)rotation Scale: (GLKVector3)scale;
+- (void)setPosition: (GLKVector3)position;
 - (void)loadModel:(NSString *)modelName;
 - (void)loadModelMatrix:(GLKMatrix4) modelMatrix;
 

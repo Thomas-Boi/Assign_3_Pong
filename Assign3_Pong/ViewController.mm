@@ -34,6 +34,7 @@
     // start game here...
     [manager.getScoreTracker resetScores];
     manager.getScoreTracker.gameStarted = true;
+    [manager startGame];
 }
 
 - (IBAction)movePaddle:(UIPanGestureRecognizer *)sender {

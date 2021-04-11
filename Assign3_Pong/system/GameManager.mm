@@ -7,7 +7,9 @@
 
 #import "GameManager.h"
 
-const GLKVector2 MONSTER_SPAWN_POSITION = GLKVector2Make(SCREEN_WIDTH/2, SCREEN_HEIGHT);
+const GLKVector3 initialPlayerPosition = GLKVector3Make(SCREEN_WIDTH/6, SCREEN_HEIGHT/2, DEPTH);
+const GLKVector3 initialEnemyPosition = GLKVector3Make(SCREEN_WIDTH/6 * 5, SCREEN_HEIGHT/2, DEPTH);
+const GLKVector3 initialBallPosition = GLKVector3Make(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, DEPTH);
 
 @interface GameManager()
 {
@@ -15,9 +17,6 @@ const GLKVector2 MONSTER_SPAWN_POSITION = GLKVector2Make(SCREEN_WIDTH/2, SCREEN_
     ObjectTracker *tracker;
     PhysicsWorld *physics;
     ScoreTracker *scoreTracker;
-    
-    float elapsedMonsterSpawnTime;
-    bool playerDirection;
 }
 
 @end
@@ -35,8 +34,6 @@ const GLKVector2 MONSTER_SPAWN_POSITION = GLKVector2Make(SCREEN_WIDTH/2, SCREEN_
     
     physics = [[PhysicsWorld alloc] init];
     [self createGameScene];
-    
-    playerDirection = true;
 }
 
 - (ScoreTracker*) getScoreTracker {
@@ -54,7 +51,7 @@ const GLKVector2 MONSTER_SPAWN_POSITION = GLKVector2Make(SCREEN_WIDTH/2, SCREEN_
         float padHeight = 2;
         float padWidth = 0.5;
         Player *playerPad = [[Player alloc] init];
-        [playerPad initPosition:GLKVector3Make(SCREEN_WIDTH/4, SCREEN_HEIGHT/2, DEPTH) Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(padWidth, padHeight, 1) VertShader:@"PlayerShader.vsh" AndFragShader:@"PlayerShader.fsh" ModelName:@"cube" PhysicsBodyType:DYNAMIC];
+        [playerPad initPosition:initialPlayerPosition Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(padWidth, padHeight, 1) VertShader:@"PlayerShader.vsh" AndFragShader:@"PlayerShader.fsh" ModelName:@"cube" PhysicsBodyType:DYNAMIC];
         
         // tracker tracks things to be used for render and physics
         tracker.player = playerPad;
@@ -63,12 +60,12 @@ const GLKVector2 MONSTER_SPAWN_POSITION = GLKVector2Make(SCREEN_WIDTH/2, SCREEN_
         [physics addObject:playerPad];
         
         Enemy *enemyPad = [[Enemy alloc] init];
-        [enemyPad initPosition:GLKVector3Make(SCREEN_WIDTH/4 * 3, SCREEN_HEIGHT/2, DEPTH) Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(padWidth, padHeight, 1) VertShader:@"PlayerShader.vsh" AndFragShader:@"PlayerShader.fsh" ModelName:@"cube" PhysicsBodyType:DYNAMIC];
+        [enemyPad initPosition:initialEnemyPosition Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(padWidth, padHeight, 1) VertShader:@"PlayerShader.vsh" AndFragShader:@"PlayerShader.fsh" ModelName:@"cube" PhysicsBodyType:DYNAMIC];
         tracker.enemy = enemyPad;
         [physics addObject:enemyPad];
         
         Bullet *ball = [[Bullet alloc] init];
-        [ball initPosition:GLKVector3Make(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, DEPTH) Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(3, 3, 1) VertShader:@"PlayerShader.vsh" AndFragShader:@"PlayerShader.fsh" ModelName:@"sphere" PhysicsBodyType:DYNAMIC];
+        [ball initPosition:initialBallPosition Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(0.5, 0.5, 1) VertShader:@"PlayerShader.vsh" AndFragShader:@"PlayerShader.fsh" ModelName:@"cube" PhysicsBodyType:DYNAMIC];
         tracker.ball = ball;
         [physics addObject:ball];
         
@@ -76,12 +73,14 @@ const GLKVector2 MONSTER_SPAWN_POSITION = GLKVector2Make(SCREEN_WIDTH/2, SCREEN_
         // make the walls
         float platformThickness = 1;
         Wall *leftWall = [[Wall alloc] init];
-        [leftWall initPosition:GLKVector3Make(0, SCREEN_HEIGHT / 2, DEPTH) Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(platformThickness, SCREEN_HEIGHT, 1) VertShader:@"PlatformShader.vsh" AndFragShader:@"PlatformShader.fsh" ModelName:@"cube" PhysicsBodyType:STATIC];
+        [leftWall initPosition:GLKVector3Make(0 - platformThickness, SCREEN_HEIGHT / 2, DEPTH) Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(platformThickness, SCREEN_HEIGHT, 1) VertShader:@"PlatformShader.vsh" AndFragShader:@"PlatformShader.fsh" ModelName:@"cube" PhysicsBodyType:STATIC];
+        leftWall.side = RIGHT_WALL;
         [tracker addPlatform:leftWall];
         [physics addObject:leftWall];
         
         Wall *rightWall = [[Wall alloc] init];
-        [rightWall initPosition:GLKVector3Make(SCREEN_WIDTH, SCREEN_HEIGHT / 2, DEPTH) Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(platformThickness, SCREEN_HEIGHT, 1) VertShader:@"PlatformShader.vsh" AndFragShader:@"PlatformShader.fsh" ModelName:@"cube" PhysicsBodyType:STATIC];
+        [rightWall initPosition:GLKVector3Make(SCREEN_WIDTH + platformThickness, SCREEN_HEIGHT / 2, DEPTH) Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(platformThickness, SCREEN_HEIGHT, 1) VertShader:@"PlatformShader.vsh" AndFragShader:@"PlatformShader.fsh" ModelName:@"cube" PhysicsBodyType:STATIC];
+        rightWall.side = RIGHT_WALL;
         [tracker addPlatform:rightWall];
         [physics addObject:rightWall];
         
@@ -96,6 +95,26 @@ const GLKVector2 MONSTER_SPAWN_POSITION = GLKVector2Make(SCREEN_WIDTH/2, SCREEN_
         [physics addObject:floor];
 
     }
+}
+
+- (void) startGame
+{
+    [tracker.ball startMoving];
+    [tracker.enemy startMoving];
+}
+
+- (void) reset
+{
+    tracker.ball.hitWall = 0;
+    
+    // set velocity
+    [tracker.enemy stopMoving];
+    [tracker.ball stopMoving];
+    
+    // set position
+    [tracker.player setPosition:initialPlayerPosition];
+    [tracker.enemy setPosition:initialEnemyPosition];
+    [tracker.ball setPosition:initialBallPosition];
 }
 
 // for the player
@@ -116,22 +135,30 @@ const GLKVector2 MONSTER_SPAWN_POSITION = GLKVector2Make(SCREEN_WIDTH/2, SCREEN_
     
     // update the enemy
     [tracker.enemy update];
+    
+    [tracker.ball update];
+    
+    if (tracker.ball.hitWall > 0)
+    {
+        if (tracker.ball.hitWall == LEFT_WALL)
+        {
+            [scoreTracker incrementEnemyScore];
+        }
+        else if (tracker.ball.hitWall == RIGHT_WALL)
+        {
+            [scoreTracker incrementPlayerScore];
+        }
+        [self reset];
+    }
     // platforms don't need to be updated
     
-}
-
-- (void) direction:(bool) d
-{
-    playerDirection = d;
 }
 
 - (void) draw
 {
     [renderer clear];
     [renderer draw:tracker.player];
-    
     [renderer draw:tracker.ball];
-    
     [renderer draw:tracker.enemy];
     
     

@@ -16,19 +16,33 @@ const int speed = 2;
 
 @implementation Enemy
 
--(id)init
+- (float)getRandomSpeed
 {
-    if (self = [super init])
+    float maxSpeed = 6;
+    float minSpeed = 3;
+    float speed = arc4random_uniform(maxSpeed - minSpeed) + minSpeed;
+    
+    float isPositive = arc4random_uniform(2);
+    if (!isPositive)
     {
-        velocity = b2Vec2(0, speed);
+        speed = -speed;
     }
-    return self;
+    
+    return speed;
 }
 
-- (void)update
+- (void)startMoving
 {
+    float velY = [self getRandomSpeed];
+    velocity = b2Vec2(0, velY);
     self.body->SetLinearVelocity(velocity);
-    [super update];
+}
+
+
+- (void)stopMoving
+{
+    velocity = b2Vec2(0, 0);
+    self.body->SetLinearVelocity(velocity);
 }
 
 - (void)onCollision:(GameObject *)otherObj
@@ -37,6 +51,7 @@ const int speed = 2;
     {
         // flip the direction
         velocity = b2Vec2(0, -velocity.y);
+        self.body->SetLinearVelocity(velocity);
     }
 }
 @end

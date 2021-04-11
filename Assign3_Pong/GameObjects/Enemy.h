@@ -14,6 +14,8 @@
 
 @interface Enemy : GameObject
 
+- (void)startMoving;
+- (void)stopMoving;
 @end
 
 #endif /* Enemy_h */

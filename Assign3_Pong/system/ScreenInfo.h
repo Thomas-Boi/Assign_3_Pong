@@ -21,4 +21,8 @@ const int EYE_NEAR_COORD = -5;
 const int EYE_FAR_COORD = 10;
 const int DEPTH = 0;
 
+// wall sides
+const int LEFT_WALL = 1;
+const int RIGHT_WALL = 2;
+
 #endif /* ScreenInfo_h */

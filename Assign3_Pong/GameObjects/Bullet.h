@@ -10,14 +10,16 @@
 
 #import <Foundation/Foundation.h>
 #import "GameObject.h"
-#import "Wall.h"
 #import "Player.h"
+#import "Enemy.h"
+#import "Player.h"
+#import "Wall.h"
+#import "ScreenInfo.h"
 
 @interface Bullet: GameObject
+@property int hitWall;
 
-@property bool active;
--(void)move;
-- (id) initWithDirection:(int) d;
-
+- (void)startMoving;
+- (void)stopMoving;
 @end
 #endif 

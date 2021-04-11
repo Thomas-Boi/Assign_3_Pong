@@ -25,12 +25,14 @@
     return self;
 }
 
-- (void)incrementPlayerScore:(bool)player {
-    if (player) {
-        leftScore++;
-    } else {
-        rightScore++;
-    }
+- (void) incrementPlayerScore
+{
+    leftScore++;
+}
+
+- (void) incrementEnemyScore
+{
+    rightScore++;
 }
 
 - (void)resetScores {
