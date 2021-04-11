@@ -112,6 +112,10 @@ public:
         fixtureDef.restitution = 0;
         body->CreateFixture(&fixtureDef);
         
+        if ([obj isKindOfClass:[Player class]])
+        {
+            body->SetLinearDamping(2);
+        }
         // pass the physics body back to the obj
         [obj loadPhysicsBody:body];
     }

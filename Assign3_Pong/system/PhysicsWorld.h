@@ -12,6 +12,7 @@
 #import <Box2D/Box2D.h>
 #import "GameObject.h"
 #import "PhysicsBodyTypeEnum.h"
+#import "Player.h"
 
 @interface PhysicsWorld : NSObject
 

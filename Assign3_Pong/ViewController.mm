@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "ScoreTracker.h"
 
+const int speedY = 2;
+
 @interface ViewController () {
     GameManager *manager;
     ScoreTracker *scoreTracker;
@@ -41,10 +43,10 @@
     CGPoint vel = [sender velocityInView:self.view];
     
     // add code to move paddle here
-    if (vel.y > 0) { // panning up
-        
-    } else { // panning down
-        
+    if (vel.y > 0) { // panning down
+        [manager applyImpulseOnPlayer:0 Y:-speedY];
+    } else { // panning up
+        [manager applyImpulseOnPlayer:0 Y:speedY];
     }
 }
 
