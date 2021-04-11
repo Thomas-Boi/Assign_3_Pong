@@ -20,6 +20,7 @@
 - (NSString *) getScoreString;
 
 @property bool gameStarted;
+@property bool matchStarted;
 
 @end
 

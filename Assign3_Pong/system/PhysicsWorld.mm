@@ -94,6 +94,8 @@ public:
     b2BodyDef bodyDef;
     bodyDef.type = type;
     bodyDef.position.Set(obj.position.x, obj.position.y);
+    bodyDef.fixedRotation = true;
+
     b2Body *body = world->CreateBody(&bodyDef);
     
     if (body)

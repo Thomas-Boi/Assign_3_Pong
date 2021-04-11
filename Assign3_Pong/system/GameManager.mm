@@ -74,7 +74,7 @@ const GLKVector3 initialBallPosition = GLKVector3Make(SCREEN_WIDTH/2, SCREEN_HEI
         float platformThickness = 1;
         Wall *leftWall = [[Wall alloc] init];
         [leftWall initPosition:GLKVector3Make(0 - platformThickness, SCREEN_HEIGHT / 2, DEPTH) Rotation:GLKVector3Make(0, 0, 0) Scale:GLKVector3Make(platformThickness, SCREEN_HEIGHT, 1) VertShader:@"PlatformShader.vsh" AndFragShader:@"PlatformShader.fsh" ModelName:@"cube" PhysicsBodyType:STATIC];
-        leftWall.side = RIGHT_WALL;
+        leftWall.side = LEFT_WALL;
         [tracker addPlatform:leftWall];
         [physics addObject:leftWall];
         
@@ -101,6 +101,7 @@ const GLKVector3 initialBallPosition = GLKVector3Make(SCREEN_WIDTH/2, SCREEN_HEI
 {
     [tracker.ball startMoving];
     [tracker.enemy startMoving];
+        
 }
 
 - (void) reset
@@ -115,6 +116,7 @@ const GLKVector3 initialBallPosition = GLKVector3Make(SCREEN_WIDTH/2, SCREEN_HEI
     [tracker.player setPosition:initialPlayerPosition];
     [tracker.enemy setPosition:initialEnemyPosition];
     [tracker.ball setPosition:initialBallPosition];
+    
 }
 
 // for the player
@@ -148,7 +150,10 @@ const GLKVector3 initialBallPosition = GLKVector3Make(SCREEN_WIDTH/2, SCREEN_HEI
         {
             [scoreTracker incrementPlayerScore];
         }
+        
         [self reset];
+        
+        self.getScoreTracker.matchStarted = false;
     }
     // platforms don't need to be updated
     

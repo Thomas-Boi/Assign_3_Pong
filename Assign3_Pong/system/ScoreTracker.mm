@@ -17,6 +17,7 @@
 @implementation ScoreTracker
 
 @synthesize gameStarted;
+@synthesize matchStarted;
 
 - (id)init {
     if (self == [super init]) {

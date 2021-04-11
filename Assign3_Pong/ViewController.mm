@@ -28,15 +28,28 @@ const int speedY = 2;
 // MARK: Handle actions
 
 - (IBAction)startGame:(UITapGestureRecognizer *)sender {
-    NSLog(@"Game started - tap is disabled");
-    self.tapGesture.enabled = false;
     self.startLabel.hidden = true;
     [self.winnerLabel setText:@""];
     
     // start game here...
-    [manager.getScoreTracker resetScores];
-    manager.getScoreTracker.gameStarted = true;
-    [manager startGame];
+    if (!manager.getScoreTracker.gameStarted) {
+        NSLog(@"Game started");
+
+        manager.getScoreTracker.matchStarted = true;
+        manager.getScoreTracker.gameStarted = true;
+        [manager.getScoreTracker resetScores];
+        [manager startGame];
+    }
+    
+    if (!manager.getScoreTracker.matchStarted) {
+        NSLog(@"Match started");
+        
+        manager.getScoreTracker.matchStarted = true;
+        [manager startGame];
+    }
+
+    //[manager startGame];
+
 }
 
 - (IBAction)movePaddle:(UIPanGestureRecognizer *)sender {
@@ -74,10 +87,12 @@ const int speedY = 2;
     [self.scoreLabel setText:[manager.getScoreTracker getScoreString]];
     
     if ([manager.getScoreTracker gameEnded]) {
+        manager.getScoreTracker.gameStarted = false;
+        manager.getScoreTracker.matchStarted = false;
+        
         NSString* winnerString = [manager.getScoreTracker getWinnerString];
         [self.winnerLabel setText:winnerString];
         
-        self.tapGesture.enabled = true;
         self.startLabel.hidden = false;
     }
 }

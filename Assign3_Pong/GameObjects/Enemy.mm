@@ -53,5 +53,10 @@ const int speed = 2;
         velocity = b2Vec2(0, -velocity.y);
         self.body->SetLinearVelocity(velocity);
     }
+    
+    if ([otherObj isKindOfClass:[Bullet class]]) {
+        velocity = b2Vec2(0, velocity.y);
+        self.body->SetLinearVelocity(velocity);
+    }
 }
 @end
